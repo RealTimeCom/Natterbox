@@ -140,3 +140,49 @@ The gap between the two divs result in an overall width of 100% plus 4px. This c
 ```
 
 `Flexbox` is not supported in IE10 or below and only partially supported in IE11.
+
+- ## `Challenge 5`
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Red Matter</title>
+    </head>
+    <body>
+        <table id="products">
+            <tr>
+                <th>Product Code</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td data-column="code">1001</td>
+                <td data-column="description">Yealink T10</td>
+                <td data-column="price">79.99</td>
+                <td data-column="actions"><button type="button" value="1001">Add to Basket</button></td>
+            </tr>
+            <tr>
+                <td data-column="code">1001</td>
+                <td data-column="description">Yealink T20</td>
+                <td data-column="price">109.99</td>
+                <td data-column="actions"><button type="button" value="1002">Add to Basket</button></td>
+            </tr>
+        </table>
+        <script>
+            function btnClick(event) {
+                const tr = event.target.parentNode.parentNode;
+                const description = tr.querySelector('[data-column="description"]').innerText;
+                const price = tr.querySelector('[data-column="price"]').innerText;
+                alert('The ' + description + ' costs ' + price);
+            }
+
+            document.querySelectorAll('#products [data-column="actions"] button').forEach(button => {
+                button.onclick = btnClick;
+            });
+        </script>
+    </body>
+</html>
+```
